@@ -8,11 +8,18 @@ namespace BatchingDemo.ServiceInterface
     {
         public PaymentResponse Any(PaymentRequest request)
         {
-            var response = new PaymentResponse { PaymentRequestId = new Random().Next().ConvertTo<long>() };
+            var paymentRequestId = new Random().Next().ConvertTo<long>();
             
-            PublishMessage(response.ConvertTo<ProcessPaymentRequest>());
+            PublishMessage(new ProcessPaymentRequest
+            {
+                TenantId = request.TenantId,
+                PaymentRequestId = paymentRequestId
+            });
 
-            return response;
+            return new PaymentResponse
+            {
+                PaymentRequestId = paymentRequestId
+            };
         }
     }
 }

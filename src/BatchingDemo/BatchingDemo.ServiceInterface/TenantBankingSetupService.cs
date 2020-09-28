@@ -16,13 +16,11 @@ namespace BatchingDemo.ServiceInterface
         
         public Task Any(TenantBankingSetupRequest request)
         {
-            const int tenantId = 123; // TODO: Get from db
-
             try
             {
                 Console.WriteLine($"Setting up banking for Tenant id {request.TenantId} before processing payment request id {request.PaymentRequestId}");
 
-                tenantBankingProvider.SetupBanking(tenantId);
+                tenantBankingProvider.SetupBanking(request.TenantId);
                 
                 PublishMessage(request.ConvertTo<EnqueuePaymentRequest>());
             }
