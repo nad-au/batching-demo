@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.2.0" />
+    <PackageReference Include="ServiceStack" Version="5.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BatchingDemo.ServiceInterface\BatchingDemo.ServiceInterface.csproj" />
+    <ProjectReference Include="..\BatchingDemo.ServiceModel\BatchingDemo.ServiceModel.csproj" />
+  </ItemGroup>
+
+</Project>
